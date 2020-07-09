@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             x:Class="XamarinTraining.Views.MainPage"
+             Title="{Binding Title}">
+
+    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+        <Button Text="Settings"
+                Command="{Binding ViewSettingsPageCommand}"/>
+
+        <Button Text="Add User"
+                Command="{Binding AddUserCommand}"
+                CommandParameter="{Binding SelectedUser}"/>
+
+        <Label Text="Add User using Label" 
+               BackgroundColor="LightGray"
+               HorizontalOptions="CenterAndExpand">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding AddUserCommand}"
+                                      CommandParameter="{Binding SelectedUser}"
+                                      NumberOfTapsRequired="2"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+        <Entry Placeholder="Enter Name Here">
+            <Entry.Behaviors>
+                <prism:EventToCommandBehavior Command="{Binding NameChangedCommand}" EventArgsParameterPath="NewTextValue" EventName="TextChanged"/>
+            </Entry.Behaviors>
+        </Entry>
+    </StackLayout>
+
+</ContentPage>
