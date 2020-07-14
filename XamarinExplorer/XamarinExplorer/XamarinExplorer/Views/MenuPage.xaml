@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XamarinExplorer.Views.MenuPage"
+			 xmlns:prism="http://prismlibrary.com"
+			 MasterBehavior="Popover">
+	<MasterDetailPage.Master>
+		<NavigationPage AutomationId="NavigationPageMainMenu" 
+                        Title="Main Menu" 
+                        Icon="hamburger.png">
+			<x:Arguments>
+				<ContentPage AutomationId="ContentPageMainMenu" 
+                             Title="{Binding Title}">
+					<ContentPage.Resources>
+						<ResourceDictionary>
+							<Style TargetType="Page">
+								<Setter Property="BackgroundColor" Value="White" />
+							</Style>
+
+							<Style TargetType="ListView" 
+                                   x:Key="MainMenuStyle">
+								<Setter Property="BackgroundColor" Value="White" />
+								<Setter Property="SeparatorVisibility" Value="None" />
+								<Setter Property="SelectionMode" Value="Single" />
+								<Setter Property="HasUnevenRows" Value="True" />
+							</Style>
+
+							<Style TargetType="StackLayout" 
+                                   x:Key="MainMenuItemStyle">
+								<Setter Property="Orientation" Value="Horizontal" />
+								<Setter Property="Margin" Value="0,6,0,0" />
+							</Style>
+						</ResourceDictionary>
+					</ContentPage.Resources>
+
+					<ListView AutomationId="ListViewMainMenu"
+                              ItemsSource="{Binding MenuItems}"
+                              SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}"
+                              Style="{StaticResource MainMenuStyle}">
+						<ListView.ItemTemplate>
+							<DataTemplate>
+								<ViewCell>
+									<StackLayout Orientation="Vertical">										
+										<Label Text="{Binding Label}"
+                                                   FontSize="Medium"
+                                                   VerticalOptions="Center"
+                                                   TextColor="Black" />
+									</StackLayout>
+								</ViewCell>
+							</DataTemplate>
+						</ListView.ItemTemplate>
+
+						<ListView.Behaviors>
+							<prism:EventToCommandBehavior EventName="ItemTapped"  
+                                                          Command="{Binding MenuSelectedCommand}" />
+						</ListView.Behaviors>
+					</ListView>
+				</ContentPage>
+			</x:Arguments>
+		</NavigationPage>
+	</MasterDetailPage.Master>
+</MasterDetailPage>
