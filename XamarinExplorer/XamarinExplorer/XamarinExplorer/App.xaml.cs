@@ -19,7 +19,10 @@ namespace XamarinExplorer
          */
         public App() : this(null) { }
 
-        public App(IPlatformInitializer initializer) : base(initializer) { }
+        public App(IPlatformInitializer initializer) : base(initializer)
+        {
+            Xamarin.Forms.Device.SetFlags(new string[] { "RadioButton_Experimental" });
+        }
 
         protected override async void OnInitialized()
         {

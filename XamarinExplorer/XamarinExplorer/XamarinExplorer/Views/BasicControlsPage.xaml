@@ -2,13 +2,72 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:prism="http://prismlibrary.com"
+			 mc:Ignorable="d"
              x:Class="XamarinExplorer.Views.BasicControlsPage"
 			 Title="{Binding Title}">
 	<ContentPage.Content>
-      <StackLayout>
-          <Label Text="Welcome to Basic Controls Page" />
-      </StackLayout>
-  </ContentPage.Content>
+		<StackLayout>
+			<Label Text="Name" />
+
+			<Entry Text="{Binding Register.Name}" />
+
+			<Label Text="User Name" />
+
+			<Entry Text="{Binding Register.Username}" />
+
+			<Label Text="Password" />
+
+			<Entry Text="{Binding Register.Password}" IsPassword="True" />
+
+			<Label Text="Date of Birth" />
+
+			<DatePicker Date="{Binding Register.DateOfBirth}" />
+
+			<Label Text="State" />
+
+			<Picker ItemsSource="{Binding States}"
+					SelectedItem="{Binding Register.State}"
+					ItemDisplayBinding="{Binding Text}"/>
+
+			<Label Text="Gender" />
+
+			<StackLayout Orientation="Horizontal">
+				<RadioButton IsChecked="True" GroupName="GenderRadio">
+					<RadioButton.Behaviors>
+						<prism:EventToCommandBehavior EventName="CheckedChanged"
+													  Command="{Binding GenderChangedCommand}"
+													  CommandParameter="{Binding Male}"/>
+						
+					</RadioButton.Behaviors>
+				</RadioButton>
+				<Label Text="Male" VerticalOptions="Center"/>
+			</StackLayout>
+
+			<StackLayout Orientation="Horizontal">
+				<RadioButton IsChecked="False" GroupName="GenderRadio">
+					<RadioButton.Behaviors>
+						<prism:EventToCommandBehavior EventName="CheckedChanged"
+													  Command="{Binding GenderChangedCommand}"
+													  CommandParameter="{Binding Female}"/>
+
+					</RadioButton.Behaviors>
+				</RadioButton>
+				<Label Text="Female" VerticalOptions="Center"/>
+			</StackLayout>
+
+			<Label Text="Accept all rules" />
+
+			<CheckBox IsChecked="{Binding Register.AcceptToTerm}">
+				<CheckBox.Behaviors>
+					<prism:EventToCommandBehavior EventName="CheckedChanged" 
+												  Command="{Binding AccepToTermCommand}"/>
+				</CheckBox.Behaviors>
+			</CheckBox>
+
+			<Button Text="Submit"
+					Command="{Binding PerformRegisterCommand}"/>		
+			
+		</StackLayout>
+	</ContentPage.Content>
 </ContentPage>
