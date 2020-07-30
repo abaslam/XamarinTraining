@@ -1,5 +1,6 @@
 ﻿namespace XamarinExplorer.ViewModels
 {
+    using System;
     using System.Collections.ObjectModel;
     using Prism.Commands;
     using Prism.Navigation;
@@ -44,7 +45,12 @@
             string rootUri = string.Format(RootUriFormat, nameof(NavigationPage));
             this.MenuItems = new ObservableCollection<MenuModel>
             {
-                new MenuModel{ Label = "Basic Controls", Page =$"{rootUri}/{nameof(BasicControlsPage)}" }
+                new MenuModel{ Label = "Basic Controls", Page =$"{rootUri}/{nameof(BasicControlsPage)}" },
+                new MenuModel{ Label = "Enable Disable", Page =$"{rootUri}/{nameof(EnableDisablePage)}" },
+                new MenuModel{ Label = "Dialogs", Page =$"{rootUri}/{nameof(DialogPage)}" },
+                new MenuModel{ Label = "Converters", Page =$"{rootUri}/{nameof(ConverterPage)}" },
+                new MenuModel{ Label = "Advanced Controls", Page =$"{rootUri}/{nameof(AdvancedControlsPage)}" },
+                new MenuModel{ Label = "Group View", Page =$"{rootUri}/{nameof(GroupViewPage)}" }
             };
         }
     }

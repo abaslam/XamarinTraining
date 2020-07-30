@@ -6,6 +6,8 @@ using Xamarin.Essentials.Interfaces;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamarinExplorer.Dialogs;
+using XamarinExplorer.DialogModels;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace XamarinExplorer
@@ -35,8 +37,16 @@ namespace XamarinExplorer
         {
             containerRegistry.RegisterSingleton<IAppInfo, AppInfoImplementation>();
 
+            containerRegistry.RegisterDialog<SampleDialog, SampleDialogModel>();
+            containerRegistry.RegisterDialog<ChangePreferenceDialog, ChangePreferenceDialogModel>();
+
             containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.RegisterForNavigation<AdvancedControlsPage, AdvancedControlsPageViewModel>();
             containerRegistry.RegisterForNavigation<BasicControlsPage, BasicControlsPageViewModel>();
+            containerRegistry.RegisterForNavigation<ConverterPage, ConverterPageViewModel>();
+            containerRegistry.RegisterForNavigation<DialogPage, DialogPageViewModel>();
+            containerRegistry.RegisterForNavigation<EnableDisablePage, EnableDisablePageViewModel>();
+            containerRegistry.RegisterForNavigation<GroupViewPage, GroupViewPageViewModel>();
             containerRegistry.RegisterForNavigation<MenuPage, MenuPageViewModel>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
         }

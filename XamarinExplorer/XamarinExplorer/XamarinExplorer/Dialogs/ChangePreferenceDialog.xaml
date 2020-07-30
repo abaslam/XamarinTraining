@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:prism="clr-namespace:Prism.Services.Dialogs.Xaml;assembly=Prism.Forms"
+       prism:DialogLayout.RelativeWidthRequest=".70"
+       prism:DialogLayout.CloseOnBackgroundTapped="False"
+       x:Class="XamarinExplorer.Dialogs.ChangePreferenceDialog"
+       BackgroundColor="White" 
+       CornerRadius="10" 
+       HasShadow="False">
+	<StackLayout>
+		<Label Text="Show Welcome Screen"/>
+		<CheckBox IsChecked="{Binding Settings.ShowWelcomeScreen}" />
+
+		<Label Text="Send Weekly Email"/>
+		<CheckBox IsChecked="{Binding Settings.SendWeeklyEmail}" />
+
+		<Button Text="Save"
+				Command="{Binding SavePreferenceCommand}" />
+
+		<Button Text="Cancel"
+				Command="{Binding ClosePreferenceCOmmand}"/>
+
+	</StackLayout>
+</Frame>

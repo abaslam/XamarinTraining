@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XamarinExplorer.Views.GroupViewPage"
+			 x:Name="PageGroupView">
+	<ContentPage.Content>
+		<StackLayout>
+
+			<!--Normal GroupView-->
+			<!--<CollectionView ItemsSource="{Binding EmployeeList}" 
+							IsGrouped="True">
+				<CollectionView.GroupHeaderTemplate>
+					<DataTemplate>
+						<Frame BackgroundColor="DarkGray">
+							<Label Text="{Binding DepamentName}" />
+						</Frame>
+					</DataTemplate>
+				</CollectionView.GroupHeaderTemplate>
+				<CollectionView.ItemTemplate>
+					<DataTemplate>
+						<Frame BorderColor="LightSlateGray" 
+                                   Margin="2">
+							<StackLayout>
+								<Label Text="Name"/>
+								<Label Text="{Binding Name}" />
+
+								<Label Text="Email"/>
+								<Label Text="{Binding Email}" />
+
+								<Label Text="Phone"/>
+								<Label Text="{Binding PhoneNumber}" />
+							</StackLayout>
+						</Frame>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>-->
+
+			<!--Accordion Groupview-->
+			<CollectionView ItemsSource="{Binding EmployeeToggleList}" 
+							IsGrouped="True">
+				<CollectionView.GroupHeaderTemplate>
+					<DataTemplate>
+						<Frame BackgroundColor="DarkGray">
+							<StackLayout HorizontalOptions="FillAndExpand">
+								<Label Text="{Binding DepartmentName}" />
+
+								<StackLayout.GestureRecognizers>
+									<TapGestureRecognizer Command="{Binding BindingContext.ToggleEmployeesCommand, Source={x:Reference PageGroupView}}"
+														  CommandParameter="{Binding}"/>
+								</StackLayout.GestureRecognizers>
+							</StackLayout>
+						</Frame>
+					</DataTemplate>
+				</CollectionView.GroupHeaderTemplate>
+				<CollectionView.ItemTemplate>
+					<DataTemplate>
+						<Frame BorderColor="LightSlateGray" 
+                                   Margin="2">
+							<StackLayout>
+								<Label Text="Name"/>
+								<Label Text="{Binding Name}" />
+
+								<Label Text="Email"/>
+								<Label Text="{Binding Email}" />
+								
+								<Label Text="Phone"/>
+								<Label Text="{Binding PhoneNumber}" />
+							</StackLayout>
+						</Frame>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

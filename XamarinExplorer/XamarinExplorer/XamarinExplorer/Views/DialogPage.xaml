@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XamarinExplorer.Views.DialogPage">
+    <ContentPage.Content>
+        <StackLayout>
+			<Button Text="Open" Command="{Binding OpenDialogCommand}"/>
+
+			<Label Text="Show Welcome Screen"/>
+			<CheckBox IsChecked="{Binding Settings.ShowWelcomeScreen}" />
+
+			<Label Text="Send Weekly Email"/>
+			<CheckBox IsChecked="{Binding Settings.SendWeeklyEmail}" />
+
+			<Button Text="Preference" Command="{Binding ChangePreferenceCommand}"/>
+
+			<Button Text="Alert" Command="{Binding AlertCommand}"/>
+
+			<Button Text="Confirm" Command="{Binding ConfirmCommand}"/>
+
+			<Button Text="Action sheet" Command="{Binding ActionSheetCommand}"/>
+
+			<!--<Button Text="Prompt" Command="{Binding PromptCommand}"/>-->
+		</StackLayout>
+    </ContentPage.Content>
+</ContentPage>

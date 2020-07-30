@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XamarinExplorer.Views.AdvancedControlsPage"
+			 x:Name="PageEmployees">
+
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style TargetType="Button">
+				<Setter Property="BackgroundColor" Value="Blue"/>
+				<Setter Property="FontSize" Value="Large"/>
+				<Setter Property="FontAttributes" Value="Bold"/>
+			</Style>
+
+			<Style TargetType="Button" x:Key="BaseButton">
+				<Setter Property="FontSize" Value="Large"/>
+				<Setter Property="FontAttributes" Value="Bold"/>
+			</Style>
+
+			<Style TargetType="Button" x:Key="DangerButton" BasedOn="{StaticResource BaseButton}">
+				<Setter Property="BackgroundColor" Value="Red"/>
+				<!--<Setter Property="FontSize" Value="Small"/>-->
+			</Style>
+
+			<Style TargetType="Button" x:Key="SuccessButton" BasedOn="{StaticResource BaseButton}">
+				<Setter Property="BackgroundColor" Value="Green"/>
+			</Style>
+
+			<Style TargetType="Label" x:Key="TitleLabel">
+				<Setter Property="FontSize" Value="Large"/>
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	
+	<ContentPage.Content>
+		<StackLayout>
+			<ListView ItemsSource="{Binding Employees}"
+					  HasUnevenRows="True">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<Frame BorderColor="LightSlateGray" 
+                                   Margin="2">
+								<!--<StackLayout>
+									<Label Text="Name"/>
+									<Label Text="{Binding Name}" />
+
+									<Label Text="Email"/>
+									<Label Text="{Binding Email}" />
+
+									<Label Text="Phone"/>
+									<Label Text="{Binding PhoneNumber}" />
+									<StackLayout Orientation="Horizontal">
+										<Button Text="View"												
+												Style="{StaticResource SuccessButton}"/>
+										
+										<Button Text="Delete"
+												Command="{Binding BindingContext.DeleteEmployeeCommand, Source={x:Reference PageEmployees}}"
+												CommandParameter="{Binding}"
+												Style="{StaticResource DangerButton}"/>
+										
+										<Button Text="Edit"
+												Command="{Binding BindingContext.EditEmployeeCommand, Source={x:Reference PageEmployees}}"
+												CommandParameter="{Binding}"/>
+									</StackLayout>
+								</StackLayout>-->
+
+								<Grid>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width=".25*"/>
+										<ColumnDefinition Width="*"/>
+									</Grid.ColumnDefinitions>
+
+									<Grid.RowDefinitions>
+										<RowDefinition Height=".40*"/>
+										<RowDefinition Height=".30*"/>
+										<RowDefinition Height=".30*"/>
+									</Grid.RowDefinitions>
+									
+									<Label Grid.Row="0" Grid.Column="0" Text="Name" Style="{StaticResource TitleLabel}"/>
+									<Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}"  Style="{StaticResource TitleLabel}"/>
+
+									<Label Grid.Row="1" Grid.Column="0" Text="Email"/>
+									<Label Grid.Row="1" Grid.Column="1" Text="{Binding Email}" />
+
+									<Label Grid.Row="2" Grid.Column="0" Text="Phone"/>
+									<Label Grid.Row="2" Grid.Column="1" Text="{Binding PhoneNumber}" />
+								</Grid>
+							</Frame>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

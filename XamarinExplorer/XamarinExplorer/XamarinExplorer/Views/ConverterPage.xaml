@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XamarinExplorer.Views.ConverterPage">
+	<ContentPage.Content>
+		<StackLayout>
+			<Label Text="Amount"/>
+
+			<Entry Text="{Binding Transfer.Amount, Converter={StaticResource currencyConverter}}" Keyboard="Numeric"/>
+
+			<Label Text="Is NEFT"/>
+
+			<CheckBox IsChecked="{Binding Transfer.Neft}" />
+
+			<StackLayout IsVisible="{Binding Transfer.Neft}">
+				<Label Text="Neft Code"/>
+				<Entry Text="{Binding Transfer.NeftCode}" Keyboard="Numeric"/>
+			</StackLayout>
+
+			<StackLayout IsVisible="{Binding Transfer.Neft, Converter={StaticResource inverseBooleanConverter}}">
+				<Label Text="Imps Code"/>
+				<Entry Text="{Binding Transfer.ImpsCode}" Keyboard="Numeric"/>
+			</StackLayout>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
