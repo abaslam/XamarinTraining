@@ -50,7 +50,9 @@
                 new MenuModel{ Label = "Dialogs", Page =$"{rootUri}/{nameof(DialogPage)}" },
                 new MenuModel{ Label = "Converters", Page =$"{rootUri}/{nameof(ConverterPage)}" },
                 new MenuModel{ Label = "Advanced Controls", Page =$"{rootUri}/{nameof(AdvancedControlsPage)}" },
-                new MenuModel{ Label = "Group View", Page =$"{rootUri}/{nameof(GroupViewPage)}" }
+                new MenuModel{ Label = "Group View", Page =$"{rootUri}/{nameof(GroupViewPage)}" },
+                new MenuModel{ Label = "Busy Indicator", Page =$"{rootUri}/{nameof(BusyIndicatorPage)}" },
+                new MenuModel{ Label = "Permissions", Page =$"{rootUri}/{nameof(PermissionPage)}" }
             };
         }
     }

@@ -39,6 +39,7 @@ namespace XamarinExplorer
 
             containerRegistry.RegisterDialog<SampleDialog, SampleDialogModel>();
             containerRegistry.RegisterDialog<ChangePreferenceDialog, ChangePreferenceDialogModel>();
+            containerRegistry.RegisterDialog<BusyIndicatorDialog, BusyIndicatorDialogModel>();
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<AdvancedControlsPage, AdvancedControlsPageViewModel>();
@@ -48,7 +49,11 @@ namespace XamarinExplorer
             containerRegistry.RegisterForNavigation<EnableDisablePage, EnableDisablePageViewModel>();
             containerRegistry.RegisterForNavigation<GroupViewPage, GroupViewPageViewModel>();
             containerRegistry.RegisterForNavigation<MenuPage, MenuPageViewModel>();
-            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            //containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigationOnPlatform<MainPage, MainPageViewModel>(new Platform<MainUwpPage>(Prism.AppModel.RuntimePlatform.UWP));
+            containerRegistry.RegisterForNavigation<BusyIndicatorPage, BusyIndicatorPageViewModel>();
+            containerRegistry.RegisterForNavigation<PermissionPage, PermissionPageViewModel>();
         }
     }
 }
+

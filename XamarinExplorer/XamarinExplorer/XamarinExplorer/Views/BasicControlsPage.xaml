@@ -40,6 +40,15 @@
 													  CommandParameter="{Binding Male}"/>
 						
 					</RadioButton.Behaviors>
+					<RadioButton.Margin>					
+						<OnPlatform x:TypeArguments="Thickness">
+							<OnPlatform.Platforms>
+								<On Platform="iOS" Value="0, 10, 0, 0" />
+								<On Platform="Android" Value="0, 0, 0, 0" />
+								<On Platform="UWP" Value="0, 0, 0, 0" />
+							</OnPlatform.Platforms>
+						</OnPlatform>
+					</RadioButton.Margin>
 				</RadioButton>
 				<Label Text="Male" VerticalOptions="Center"/>
 			</StackLayout>
@@ -52,6 +61,15 @@
 													  CommandParameter="{Binding Female}"/>
 
 					</RadioButton.Behaviors>
+					<RadioButton.Margin>
+						<OnPlatform x:TypeArguments="Thickness">
+							<OnPlatform.Platforms>
+								<On Platform="iOS" Value="0, 15, 0, 0" />
+								<On Platform="Android" Value="0, 0, 0, 0" />
+								<On Platform="UWP" Value="0, 0, 0, 0" />
+							</OnPlatform.Platforms>
+						</OnPlatform>
+					</RadioButton.Margin>
 				</RadioButton>
 				<Label Text="Female" VerticalOptions="Center"/>
 			</StackLayout>
@@ -66,8 +84,21 @@
 			</CheckBox>
 
 			<Button Text="Submit"
-					Command="{Binding PerformRegisterCommand}"/>		
-			
+					Command="{Binding PerformRegisterCommand}"/>
+
+			<OnPlatform x:TypeArguments="Label">
+				<On Platform="iOS">
+					<Label Text="I will be displayed in IOS"/>
+				</On>
+				<On Platform="UWP">
+					<Label Text="I will be displayed in UWP"/>
+				</On>
+				<On Platform="Android">
+					<Label Text="I will be displayed in Android"/>
+				</On>
+			</OnPlatform>
+
+			<ActivityIndicator IsRunning="True"/>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>
